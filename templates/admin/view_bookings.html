@@ -1,0 +1,102 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Home</title>
+    <style>
+
+/* .btn{
+    background-color: #e6c0d9;
+    padding:   5px 15px;
+    margin-left: 15px;
+    color: #FFFFFF ;
+    text-decoration: none;
+    
+} */
+table {
+  width: 70%;
+  margin-top: 30px;
+  margin-right: 40px;
+  
+}
+
+th {
+  height: 30px;
+  padding: 15px;
+  text-align: left;
+  color: rgb(112, 39, 39);
+  background-color: rgb(183, 133, 176);
+  
+}
+td {
+  padding: 15px;
+  text-align: left;
+  color: rgb(73, 65, 128);
+  background-color: rgb(250, 246, 246);
+
+}
+/* .first{
+    display: flex;
+    background-color: #dce1e3;
+    margin:50px;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+} */
+.right{
+    background-color: rgb(176, 138, 192);
+    justify-content: space-between;
+    border: violet;
+    color: whitesmoke;
+
+}
+.card-image{
+    height: 100px;
+    width: 100px;
+}
+
+
+    </style>
+</head>
+<body>
+    
+   
+<div class="first">
+
+   <div class="main">
+   <table border="1">
+    <tr> 
+        <th>Doctor name</th>
+        <th>Booking Date&time</th>
+        <th>Edit details</th>
+        <th>Delete</th>    
+    </tr>
+    {% for bookings in all_bookings %}
+    <tr>
+          
+    <td><p class="doc-name">{{b.Doctor_Name}}</p><br></td>
+    <td><p>Booked on {{b.Booking_Date}} <br> at {{b.Booking_Time}} </p><br></td>
+   
+    
+    
+    
+    <!-- <div class="right"> -->
+        
+        <td><a href="#"><button class="right">Edit</button></a></td>
+        <td><a href="#" onclick="return confirm('Are you sure want to delete?')"><i class="material-icons">delete</i></a></td>
+    <!-- </div> -->
+    </tr>
+    {%endfor%}
+
+   
+</table>
+</div>
+</div>
+
+</body>
+</html>

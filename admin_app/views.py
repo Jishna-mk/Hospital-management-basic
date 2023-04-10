@@ -52,3 +52,29 @@ def view_all_doctors(request):
     doctor_count = all_doctors.count()
     return render(request,"admin/doctors_view.html",{"all_doctors":all_doctors,"doctor_count":doctor_count})
 
+# def view_user_profile(request):
+#     user = UserProfile.objects.filter(user_ID=request.user.id)
+#     if(len(user) == 0):
+#         return redirect("add_user_profile")
+#     return render(request,"users/user-profile.html",{"user":user[0]})
+
+def view_user_profile(request):
+    all_users = UserProfile.objects.all()
+    user_count=all_users.count()
+    return render(request,"admin/users_view.html",{"user": all_users,"user_count":user_count })
+
+# def view_my_bookings(request):
+#     all_bookings = Booking.objects.filter(Patient_ID=request.user.id).exclude(status="Cancelled").exclude(status="Cancelled By Doctor")
+#     app_count = all_bookings.count()
+#     return render(request,"users/view-all-bookings.html",{"all_bookings":all_bookings,"app_count":app_count})
+
+def view_bookings(request):
+    all_bookings = Booking.objects.all()
+    app_count = all_bookings.count()
+    return render(request,"admin/view_bookings.html",{"all_bookings":all_bookings,"app_count":app_count})
+
+# def delete_booking(request,aid):
+#       all_bookings = Booking.objects.get(id=aid)
+#       all_bookings .delete()
+#       messages.info(request,"successfully deleted")
+#       return redirect("admin_page")
