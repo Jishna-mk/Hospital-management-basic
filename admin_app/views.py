@@ -61,7 +61,7 @@ def view_all_doctors(request):
 def view_user_profile(request):
     all_users = UserProfile.objects.all()
     user_count=all_users.count()
-    return render(request,"admin/users_view.html",{"user": all_users,"user_count":user_count })
+    return render(request,"admin/users_view.html",{"all_users": all_users,"user_count":user_count })
 
 # def view_my_bookings(request):
 #     all_bookings = Booking.objects.filter(Patient_ID=request.user.id).exclude(status="Cancelled").exclude(status="Cancelled By Doctor")
@@ -73,8 +73,21 @@ def view_bookings(request):
     app_count = all_bookings.count()
     return render(request,"admin/view_bookings.html",{"all_bookings":all_bookings,"app_count":app_count})
 
-# def delete_booking(request,aid):
-#       all_bookings = Booking.objects.get(id=aid)
-#       all_bookings .delete()
+# def delete_booking(request,pk):
+#       b= Booking.objects.get(pk=pk)
+#       b.delete()
 #       messages.info(request,"successfully deleted")
 #       return redirect("admin_page")
+  
+  
+def delete_booking(request):
+
+    bookings = Booking.objects.all()
+    if request.method == "POST":
+        id = request.POST["id"]
+        booking= Booking.objects.get(Patient_ID =id)
+        booking.delete()
+        messages.info(request, "booking Deleted!")
+        return redirect("delete_booking")
+
+    return render(request, "admin/admin.html", {"bookings": bookings})

@@ -9,5 +9,6 @@ urlpatterns = [
     path('view_doctor',views.view_all_doctors, name='view_all_doctors'),
     path('view_user',views.view_user_profile,name=' view_user_profile'),
     path('view_booking',views.view_bookings,name='view_bookings'),
-    # path('delete_booking/<int:aid>',views.delete_booking,name='delete_booking')
+    # path('delete_booking/(?pk<pk>/d+)',views.delete_booking,name='delete_booking')
+    path("delete_booking",views.delete_booking,name="delete_booking"),
 ]
